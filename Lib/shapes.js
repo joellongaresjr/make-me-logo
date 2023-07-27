@@ -15,7 +15,8 @@ class Triangle extends Shape {
     this.shape = "Triangle";
   }
   render() {
-    return `<polygon points="150, 18 244, 182 56, 182" fill="${this.color}" />`;
+    return `<polygon points="150, 18 244, 182 56, 182" fill="${this.color}" />
+    <text x="150" y="120" text-anchor="middle" fill="${this.textColor}">${this.text}</text>`;
   }
 }
 
@@ -25,7 +26,8 @@ class Circle extends Shape {
     this.shape = "Circle";
   }
   render() {
-    return `<circle cx="150" cy="115" r="80" fill="${this.color}" />`;
+    return `<circle cx="150" cy="115" r="80" fill="${this.color}" />
+    <text x="150" y="120" text-anchor="middle" fill="${this.textColor}">${this.text}</text>`;
   }
 }
 
@@ -35,7 +37,8 @@ class Square extends Shape {
     this.shape = "Square";
   }
   render() {
-    return `<rect x="73" y="40" width="160" height="160" fill="${this.color}" />`;
+    return `<rect x="73" y="40" width="160" height="160" fill="${this.color}" />
+    <text x="150" y="120" text-anchor="middle" fill="${this.textColor}">${this.text}</text>`;
   }
 }
 

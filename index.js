@@ -69,13 +69,13 @@ function createLogo(answers) {
   let shape;
   switch (logoShape) {
     case "Triangle":
-      shape = new Triangle(logoText, logoTextColor, logoShape, logoColor);
+      shape = new Triangle(logoTextColor, logoColor, logoText);
       break;
     case "Square":
-      shape = new Square(logoText, logoTextColor, logoShape, logoColor);
+      shape = new Square(logoTextColor, logoColor, logoText);
       break;
     case "Circle":
-      shape = new Circle(logoText, logoTextColor, logoShape, logoColor);
+      shape = new Circle(logoTextColor, logoColor, logoText);
       break;
     default:
       console.log("Invalid shape choice");
@@ -95,7 +95,7 @@ function createLogo(answers) {
 
 function generateSVG(logo) {
   const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
-        ${logo.shape.render()}
+        ${logo.shape.render(logo)}
     </svg>`;
 
   fs.writeFileSync("logo.svg", svgContent);
