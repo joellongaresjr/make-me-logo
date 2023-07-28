@@ -25,7 +25,7 @@ const colorValidation = (input) => {
     "white",
   ];
   if (colorStrings.includes(input.toLowerCase())) {
-    return true; 
+    return true;
   }
 
   if (/^#[A-Fa-f0-9]{6}|[A-Fa-f0-9]{3}$/.test(input)) {
@@ -36,25 +36,25 @@ const colorValidation = (input) => {
 };
 
 const questions = [
-    {
-        type: "input",
-        name: "logoText",
-        message: "Please enter 3 letters for your logo?",
-        validate: logoTextValidation,
-    },
-    {
-        type: "input",
-        name: "logoTextColor",
-        message: "What color would you like your text to be?",
-        validate: colorValidation,
-    },
-    {
-        type: "list",
-        name: "logoShape",
-        message: "Please select a Shape!",
-        choices: ["Triangle", "Square", "Circle"],
-    },
-    {
+  {
+    type: "input",
+    name: "logoText",
+    message: "Please enter 3 letters for your logo?",
+    validate: logoTextValidation,
+  },
+  {
+    type: "input",
+    name: "logoTextColor",
+    message: "What color would you like your text to be?",
+    validate: colorValidation,
+  },
+  {
+    type: "list",
+    name: "logoShape",
+    message: "Please select a Shape!",
+    choices: ["Triangle", "Square", "Circle"],
+  },
+  {
     type: "input",
     name: "logoColor",
     message: "Please provide a color for your logo",
@@ -62,54 +62,55 @@ const questions = [
   },
 ];
 
-
 function createLogo(answers) {
-  const { logoText, logoTextColor, logoShape, logoColor } = answers;
+  const logoTextColor = answers.logoTextColor;
+  const logoColor = answers.logoColor;
+  const logoText = answers.logoText;
 
-  let shape;
-  switch (logoShape) {
+  switch (answers.logoShape) {
     case "Triangle":
-      shape = new Triangle(logoTextColor, logoColor, logoText);
+      return new Triangle(logoColor, logoTextColor, logoText).render();
       break;
     case "Square":
-      shape = new Square(logoTextColor, logoColor, logoText);
+      return new Square(logoColor, logoTextColor, logoText).render();
       break;
     case "Circle":
-      shape = new Circle(logoTextColor, logoColor, logoText);
+      return new Circle(logoColor, logoTextColor, logoText).render();
       break;
     default:
-      console.log("Invalid shape choice");
       return null;
   }
-
-  shape.setColor(logoColor);
-
-  const logo = {
-    text: logoText,
-    textColor: logoTextColor,
-    shape: shape,
-  };
-
-  return logo;
 }
 
-function generateSVG(logo) {
-  const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200">
-        ${logo.shape.render(logo)}
-    </svg>`;
+const generateSVG = async (logo) => {
+  console.log(logo);
 
-  fs.writeFileSync("logo.svg", svgContent);
-
-  console.log("Generated logo.svg");
-}
-
-function init() {
-  inquirer.prompt(questions).then((answers) => {
-    const logo = createLogo(answers);
-    if (logo) {
-      generateSVG(logo);
+  fs.writeFile("logo.svg", logo, (err) => 
+  {
+    if (err) {
+      console.log(err)
     }
+    console.log("Generated logo.svg");
   });
 }
+
+const init = async () => {
+  const answers = await inquirer.prompt(questions);
+  console.log(answers);
+  const logo = await createLogo(answers);
+  generateSVG(logo);
+
+};
+
+
+
+// function init() {
+//   inquirer.prompt(questions).then((answers) => {
+//     const logo = createLogo(answers);
+//     if (logo) {
+//       generateSVG(logo);
+//     }
+//   });
+// }
 
 init();

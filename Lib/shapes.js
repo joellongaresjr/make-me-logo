@@ -4,41 +4,41 @@ class Shape {
     this.textColor = textColor;
     this.text = text;
   }
-  setColor(colorVar) {
-    this.color = colorVar;
-  }
 }
 
 class Triangle extends Shape {
   constructor(color, textColor, text) {
     super(color, textColor, text);
-    this.shape = "Triangle";
   }
   render() {
-    return `<polygon points="150, 18 244, 182 56, 182" fill="${this.color}" />
-    <text x="150" y="120" text-anchor="middle" fill="${this.textColor}">${this.text}</text>`;
+    return `<svg version="1.1" width="300" height="240" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="150,18 244,182 56,182" fill="${this.color}" />
+    <text x="150" y="120" font-size="80" text-anchor="middle" fill="${this.textColor}">${this.text}</text>
+  </svg>`;
   }
 }
 
 class Circle extends Shape {
   constructor(color, textColor, text) {
     super(color, textColor, text);
-    this.shape = "Circle";
   }
   render() {
-    return `<circle cx="150" cy="115" r="80" fill="${this.color}" />
-    <text x="150" y="120" text-anchor="middle" fill="${this.textColor}">${this.text}</text>`;
+    return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="150" cy="100" r="80" fill="${this.color}" />
+    <text x="150" y="115" font-size="80" text-anchor="middle" fill="${this.textColor}">${this.text}</text>
+  </svg>`;
   }
 }
 
 class Square extends Shape {
   constructor(color, textColor, text) {
-    super(color, textColor, text);
-    this.shape = "Square";
+    super(color, textColor, text)
   }
   render() {
-    return `<rect x="73" y="40" width="160" height="160" fill="${this.color}" />
-    <text x="150" y="120" text-anchor="middle" fill="${this.textColor}">${this.text}</text>`;
+    return `<svg version="1.1" width="300" height="240" xmlns="http://www.w3.org/2000/svg">
+    <rect x="70" y="40" width="160" height="160" fill="${this.color}" />
+    <text x="150" y="120" font-size="80" text-anchor="middle" fill="${this.textColor}">${this.text}</text>
+  </svg>`;
   }
 }
 
