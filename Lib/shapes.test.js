@@ -11,7 +11,7 @@ describe("Test Triangle", () => {
     expect(shape.render()).toEqual(
         `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
   <polygon points="150,18 244,182 56,182" fill="orange" />
-  <text x="150" y="120" font-size="80" text-anchor="middle" fill="purple">BOY</text>
+  <text x="150" y="170" font-size="80" text-anchor="middle" fill="purple">BOY</text>
   </svg>`
     );
   });
@@ -28,25 +28,25 @@ describe("Test Circle", () => {
     expect(shape.render()).toEqual(
         `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
   <circle cx="150" cy="100" r="80" fill="red" />
-  <text x="150" y="115" font-size="80" text-anchor="middle" fill="green">MOM</text>
+  <text x="150" y="125" font-size="80" text-anchor="middle" fill="green">MOM</text>
   </svg>`
     );
   });
 });
 
 describe("Test Square", () => {
-    test("testing square with a purple background with text color of blue", () => {
+    test("testing square with a purple background", () => {
       const color = "purple"
-      const text = "DAD"
+      const text= "DAD"
       const textColor = "blue"
 
       const shape = new Square(color, textColor, text);
 
       expect(shape.render()).toEqual(
           `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-    <rect x="73" y="40" width="160" height="160" fill="purple" />
-    <text x="150" y="120" font-size="80" text-anchor="middle" fill="blue">DAD</text>
-    </svg>`
+  <rect x="70" y="0" width="200" height="200" fill="purple" />
+  <text x="165" y="135" font-size="80" text-anchor="middle" fill="blue">DAD</text>
+  </svg>`
       );
     });
   });
