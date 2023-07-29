@@ -1,3 +1,5 @@
+// using inquirer method & write to file
+// calling our classes of 'triangle', 'circle' , 'square'
 const inquirer = require("inquirer");
 const fs = require("fs");
 const { Triangle, Circle, Square } = require("./Lib/shapes.js");
@@ -73,7 +75,6 @@ function createLogo(answers) {
   const logoColor = answers.logoColor;
   const logoText = answers.logoText;
 
-// apply switch statment with the users selected 'logoShape' 
   switch (answers.logoShape) {
 // selecting each shape as new Instance from the 'lib - shapes.js' with the properties of 'logoTextColor,logoColor,logoText' and rendering the svg properties of the logo that was inputted from the user
     case "Triangle":
