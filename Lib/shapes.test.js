@@ -1,13 +1,16 @@
 const { Triangle, Circle, Square } = require("./shapes.js");
 
+// overall each describe block for testing each shape in this case 'Triangle' and we apply for each shape(Traingle, Circle, and Square)
 describe("Test Triangle", () => {
   test("testing triangle with a orange background with text color of purple", () => {
     const color = "orange"
     const text = "BOY"
     const textColor = "purple"
 
+// creating a new instance of the each shape in this case Triangle with the define properties of (color, textColor, text)
     const shape = new Triangle(color, textColor, text);
-    
+
+// expecting that each shape has the SVG representation that is rendered to match the expected output 
     expect(shape.render()).toEqual(
         `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
   <polygon points="150,18 244,182 56,182" fill="orange" />

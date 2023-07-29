@@ -1,3 +1,4 @@
+// Class Shape represents all the shapes with constructor parameters of (color, textColor,text)
 class Shape {
   constructor(color, textColor, text) {
     this.color = color;
@@ -6,10 +7,13 @@ class Shape {
   }
 }
 
+// Class representing Triangle
 class Triangle extends Shape {
   constructor(color, textColor, text) {
     super(color, textColor, text);
   }
+// rendering svg with the properties of the constructor parameters (color, textColor, text) 
+//btw this was so annoying having to adjust the x"#"" for each given shape to make sure that the text and shape were aligned properly. a lot of trial & error, and "a lot" is an understatement lol
   render() {
     return `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
   <polygon points="150,18 244,182 56,182" fill="${this.color}" />
@@ -18,6 +22,7 @@ class Triangle extends Shape {
   }
 }
 
+// Class representing Circle
 class Circle extends Shape {
   constructor(color, textColor, text) {
     super(color, textColor, text);
@@ -30,6 +35,7 @@ class Circle extends Shape {
   }
 }
 
+// Class representing Square
 class Square extends Shape {
   constructor(color, textColor, text) {
     super(color, textColor, text)
@@ -42,4 +48,5 @@ class Square extends Shape {
   }
 }
 
+// exports object (triangle, circle, square)
 module.exports = { Triangle, Circle, Square };
